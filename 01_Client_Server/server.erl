@@ -26,7 +26,8 @@ loop()->
 			io:format("recv stop~n")
 
 		after 1000->
-			ets:delete(proc_table),
+			% ensure deallocation of proc_table
+			ets:delete(proc_table), 
 			io:format("timeout~n")
 	end.
 
